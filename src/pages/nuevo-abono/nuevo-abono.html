@@ -1,0 +1,51 @@
+<!--
+  Generated template for the NuevoAbonoPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Nuevo Abono {{cliente.ter_nombre}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+   
+    <ion-item>
+      <ion-label floating>Valor Cancelado</ion-label>
+      <ion-input type="number" [(ngModel)]="valor_abono"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Nota</ion-label>
+      <ion-input type="text" [(ngModel)]="nota_abono"></ion-input>
+    </ion-item>
+  </ion-list>
+  <button (click)="guardarAbono()" ion-button full>Guardar Abono</button>
+
+  <ion-grid>
+    <ion-row class="encabezado_linea_venta">
+      <ion-col col-4>Fecha</ion-col>
+      <ion-col col-4>Valor</ion-col>
+      <ion-col col-4>Saldo</ion-col>     
+    </ion-row>
+    <ion-row *ngFor="let cuenta of cuentas" class="linea_venta">
+      <ion-col col-4>        
+        {{cuenta.vnt_fecha | date:'dd/MM/yyyy'}}</ion-col>
+      <ion-col col-4>{{cuenta.vnt_valor | number:0}}</ion-col>      
+      <ion-col col-4 class="linea_saldo">{{(cuenta.vnt_saldo) | number:0}}</ion-col>     
+    </ion-row>
+
+    <ion-row justify-content-end class="pie_linea_venta">     
+      <ion-col col-4>Total</ion-col>  
+      <ion-col col-4>{{saldo_total | number:0}}</ion-col>     
+    </ion-row>
+    
+  </ion-grid>
+ 
+</ion-content>
